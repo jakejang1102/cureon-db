@@ -681,6 +681,17 @@ function TaskModal({
   );
 }
 
+/* ── 수정 이력 빨간 점 표시 컴포넌트 ── */
+function HistoryBadge({ histories }) {
+  if (!histories || histories.length === 0) return null;
+  return (
+    <span
+      className="history-badge"
+      title={`수정 ${histories.length}건`}
+    />
+  );
+}
+
 export default function App() {
   const today = new Date();
   const [user, setUser] = useState(null);
@@ -936,6 +947,7 @@ export default function App() {
                 <div className="cal-date">{d}</div>
                 {dayTasks.slice(0, 3).map((t) => {
                   const cs = catStyle(t.category);
+                  const tHistory = t.history || [];
                   return (
                     <div
                       key={t.id}
