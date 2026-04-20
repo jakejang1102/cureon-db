@@ -1104,6 +1104,14 @@ export default function App() {
               <span>{v.label}</span>
             </div>
           ))}
+          <div className="legend-item">
+    <span
+      className="legend-swatch"
+      style={{ background: "#E24B4A", borderColor: "#E24B4A", borderRadius: "50%" }}
+    />
+    <span>수정됨 (24시간 활성화)</span>
+  </div>
+</div>
         </div>
 
         {view === "year" && <YearView />}
