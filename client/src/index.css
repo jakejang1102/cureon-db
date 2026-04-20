@@ -261,16 +261,24 @@ a {
   padding: 3px 6px;
   border-radius: 4px;
   margin-bottom: 2px;
-  display: flex;
-  align-items: center;
-  position: relative;
   cursor: pointer;
   border: 1px solid var(--border);
   background: var(--surface2);
   color: var(--text);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
+.cal-task-title{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0
+}
+  
 .cal-task:hover {
   filter: brightness(0.97);
 }
