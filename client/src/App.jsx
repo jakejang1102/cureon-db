@@ -684,10 +684,16 @@ function TaskModal({
 /* ── 수정 이력 빨간 점 표시 컴포넌트 ── */
 function HistoryBadge({ histories }) {
   if (!histories || histories.length === 0) return null;
+  const now = new Date();
+  const recent = histories.filter((log) => {
+    const diff = (now - new Date(log.date)) / (1000 * 60 * 60 * 24);
+    return diff <= 1;
+  });
+  if (recent.length === 0) return null;
   return (
     <span
       className="history-badge"
-      title={`수정 ${histories.length}건`}
+      title={`최근 수정 ${recent.length}건`}
     />
   );
 }
