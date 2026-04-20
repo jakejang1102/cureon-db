@@ -947,7 +947,7 @@ export default function App() {
                 <div className="cal-date">{d}</div>
                 {dayTasks.slice(0, 3).map((t) => {
                   const cs = catStyle(t.category);
-                  const tHistory = t.history || [];
+                  const tHistory = t.logs || [];
                   return (
                     <div
                       key={t.id}
