@@ -951,7 +951,7 @@ export default function App() {
                 onClick={() => handleCellClick(d, cm, cy)}
               >
                 <div className="cal-date">{d}</div>
-                {dayTasks.slice(0, 3).map((t) => {
+                {dayTasks.map((t) => {
                   const cs = catStyle(t.category);
                   const tHistory = t.logs || [];
                   return (
@@ -973,9 +973,7 @@ export default function App() {
                     </div>
                   );
                 })}
-                {dayTasks.length > 3 && (
-                  <div className="cal-more">+{dayTasks.length - 3}건</div>
-                )}
+                
               </div>
             );
           })}
