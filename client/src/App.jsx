@@ -681,7 +681,7 @@ function TaskModal({
   );
 }
 
-/* ── 수정 이력 빨간 점 표시 컴포넌트 ── */
+/* ── 수정 이력 빨간 점 표시 컴포넌트 (24시간 이내만 표시) ── */
 function HistoryBadge({ histories }) {
   if (!histories || histories.length === 0) return null;
   const now = new Date();
@@ -1105,13 +1105,12 @@ export default function App() {
             </div>
           ))}
           <div className="legend-item">
-    <span
-      className="legend-swatch"
-      style={{ background: "#E24B4A", borderColor: "#E24B4A", borderRadius: "50%" }}
-    />
-    <span>수정됨 (24시간 활성화)</span>
-  </div>
-</div>
+            <span
+              className="legend-swatch"
+              style={{ background: "#E24B4A", borderColor: "#E24B4A", borderRadius: "50%" }}
+            />
+            <span>수정됨 (24시간 활성화)</span>
+          </div>
         </div>
 
         {view === "year" && <YearView />}
