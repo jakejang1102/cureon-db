@@ -922,4 +922,5 @@ a {
   background: #E24B4A;
   flex-shrink: 0;
   margin-left: 2px;
+  align-self: center;
 }
