@@ -1107,7 +1107,14 @@ export default function App() {
           <div className="legend-item">
             <span
               className="legend-swatch"
-              style={{ background: "#E24B4A", borderColor: "#E24B4A", borderRadius: "50%" }}
+              style={{   background: "#E24B4A",
+              borderColor: "#E24B4A",
+              borderRadius: "50%",
+              width: 10,
+              height: 10,
+              minWidth: 10,
+              minHeight: 10,
+            }}
             />
             <span>수정됨 (24시간 활성화)</span>
           </div>
