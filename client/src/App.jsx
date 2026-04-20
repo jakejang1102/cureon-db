@@ -950,7 +950,8 @@ export default function App() {
                         setSelectedTask(t);
                       }}
                     >
-                      {t.title}
+                      <span className="cal-task-title">{t.title}</span>
+                      <HistoryBadge histories={tHistory} />
                     </div>
                   );
                 })}
