@@ -1,14 +1,11 @@
 const TOKEN_KEY = "team_app_token";
-
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
 }
-
 export function setToken(token) {
   if (token) localStorage.setItem(TOKEN_KEY, token);
   else localStorage.removeItem(TOKEN_KEY);
 }
-
 async function request(path, options = {}) {
   const headers = { "Content-Type": "application/json", ...options.headers };
   const token = getToken();
@@ -24,7 +21,6 @@ async function request(path, options = {}) {
   if (!res.ok) throw new Error(data?.error || `요청 실패 (${res.status})`);
   return data;
 }
-
 export const auth = {
   login: (email, password) =>
     request("/api/auth/login", {
@@ -38,7 +34,6 @@ export const auth = {
     }),
   me: () => request("/api/auth/me"),
 };
-
 export const tasksApi = {
   list: () => request("/api/tasks"),
   create: (body) =>
@@ -58,4 +53,14 @@ export const tasksApi = {
     }),
   removeLog: (taskId, logId) =>
     request(`/api/tasks/${taskId}/logs/${logId}`, { method: "DELETE" }),
+
+  // ── 신규: 수정 이력 API ──
+  getHistory: (taskId) => request(`/api/tasks/${taskId}/history`),
+  getAllHistory: (since, until) => {
+    const params = new URLSearchParams();
+    if (since) params.set("since", since);
+    if (until) params.set("until", until);
+    const qs = params.toString();
+    return request(`/api/history${qs ? `?${qs}` : ""}`);
+  },
 };
