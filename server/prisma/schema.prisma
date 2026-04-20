@@ -1,12 +1,10 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -14,7 +12,6 @@ model User {
   name         String
   createdAt    DateTime @default(now())
 }
-
 model Task {
   id           String    @id @default(cuid())
   title        String
@@ -34,7 +31,6 @@ model Task {
   updatedAt    DateTime  @updatedAt
   logs         TaskLog[]
 }
-
 model TaskLog {
   id      Int    @id @default(autoincrement())
   taskId  String
@@ -42,4 +38,16 @@ model TaskLog {
   content String
   date    String
   author  String
+}
+
+// ── 신규: 일정 수정 이력 자동 추적 ──
+model TaskHistory {
+  id        Int      @id @default(autoincrement())
+  taskId    String
+  action    String   // "create" | "update" | "delete"
+  field     String   // 변경된 필드명 (create/delete 시 "all")
+  oldValue  String   @default("")
+  newValue  String   @default("")
+  userName  String   // 변경한 사용자 이름
+  createdAt DateTime @default(now())
 }
