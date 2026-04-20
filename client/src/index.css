@@ -915,3 +915,11 @@ a {
   background: #fef2f2;
   color: #dc2626;
 }
+.history-badge {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E24B4A;
+  flex-shrink: 0;
+  margin-left: 2px;
+}
