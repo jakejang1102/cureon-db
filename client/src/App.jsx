@@ -686,12 +686,15 @@ function HistoryBadge({ histories }) {
   if (!histories || histories.length === 0) return null;
   const t = new Date();
   const todayString = `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDate())}`;
-  const recent = histories.filter((log) => log.date === todayString);
+  const y = new Date(t);
+  y.setDate(y.getDate() - 1);
+  const yesterdayString = `${y.getFullYear()}-${pad(y.getMonth() + 1)}-${pad(y.getDate())}`;
+  const recent = histories.filter((log) => log.date === todayString || log.date === yesterdayString);
   if (recent.length === 0) return null;
   return (
     <span
       className="history-badge"
-      title={`오늘 수정 ${recent.length}건`}
+      title={`최근 수정 ${recent.length}건`}
     />
   );
 }
