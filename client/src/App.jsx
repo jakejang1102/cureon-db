@@ -1115,7 +1115,7 @@ export default function App() {
               minHeight: 10,
             }}
             />
-            <span>수정됨 (매일 0시 초기화)</span>
+            <span>수정됨 (48시간 후 초기화)</span>
           </div>
         </div>
 
