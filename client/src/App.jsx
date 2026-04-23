@@ -742,6 +742,14 @@ export default function App() {
     if (calendarOnly) setView("month");
   }, [calendarOnly]);
 
+  useEffect(() => {
+  if (!user) return;
+  const interval = setInterval(() => {
+    loadTasks();
+  }, 5 * 60 * 1000); // 5분 = 300,000ms
+  return () => clearInterval(interval);
+}, [user, loadTasks]);
+
   const openCalendarWindow = () => {
     const u = new URL(window.location.href);
     u.searchParams.set("calendar", "1");
